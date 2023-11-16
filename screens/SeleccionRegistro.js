@@ -2,7 +2,7 @@ import { View,StyleSheet,TouchableOpacity } from "react-native";
 import { HeaderScreen } from "../components/HeaderScreen";
 import {Boton} from '../components/Boton'
 
-import { FontAwesome5,FontAwesome } from '@expo/vector-icons';
+import { SeleccionUser } from "../components/SeleccionUser";
 
 export function SeleccionRegistro({navigation}){
     function siguiente(){
@@ -11,16 +11,23 @@ export function SeleccionRegistro({navigation}){
     function goBack(){
         navigation.goBack();
     }
+
+    function eleccionDeRol(){
+        const roles = ['Estudiante','Directivo'];
+        return(
+            roles.map((e,i)=>{
+                return(
+                    <SeleccionUser estudiante={i==0?true:false} estilos = {estilos} key={i} indice={i}/>
+                )
+            })
+        )
+    }
+
     return(
         <View style={estilos.contenedorPrincipal}>
             <HeaderScreen texto={'Crear Cuenta'} funcion={goBack}/>
             <View style={estilos.main}>
-                <TouchableOpacity style={estilos.seleccionElejida}>
-                    <FontAwesome name="book" size={84} color="#D9D9D9" />
-                </TouchableOpacity>
-                <TouchableOpacity style={estilos.seleccionNoElejida}>
-                    <FontAwesome5 name="chalkboard-teacher" size={84} color="#D9D9D9" />
-                </TouchableOpacity>
+                {eleccionDeRol()}
             </View>
             <Boton texto={'Siguiente'} color={'claro'} funcion={siguiente}/>
         </View>
@@ -48,7 +55,7 @@ const estilos = StyleSheet.create({
         justifyContent:'center',
         width:200,
         borderRadius:20,
-        borderColor:'#D9D9D9',
+        borderColor:'#81D1E2',
         borderWidth:5
     },
     seleccionNoElejida:{

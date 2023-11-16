@@ -10,6 +10,9 @@ export function Bienvenida({navigation}){
     function nextScreen(){
         navigation.navigate('Seleccion');
     }
+    function nextLogin(){
+        navigation.navigate('Login');
+    }
 
     return(
         <View style={estilos.containerView}>
@@ -30,7 +33,7 @@ export function Bienvenida({navigation}){
                                 Inicia sesion si ya eres usuario, de no ser asi puedes registrarte
                             </Text>
                         </View>
-                        <Boton color={'oscuro'} texto={'Iniciar Sesion'} funcion={()=>{}}/>
+                        <Boton color={'oscuro'} texto={'Iniciar Sesion'} funcion={nextLogin}/>
                         <TouchableOpacity style={estilos.contTextCrearCuenta} onPress={nextScreen}>
                             <Text style={estilos.textCrearCuenta}>
                                 O crea tu cuenta 

@@ -6,7 +6,18 @@ export const contextoGeneral = createContext();
 
 export function Contexto({children}){
     
-    const [usuarioActivo,SetUsuarioActivo] = useState(false);
+    const[usuarioActivo,SetUsuarioActivo] = useState(true);
+    const[activado,setActivado]=useState(null);
+    const[estiloActivado,setEstiloActivado]=useState(null);
+    const [datos, setDatos] = useState(null);
+    const [perfil, setPerfil] = useState(false);
+    const [instituciones, setInstituciones] = useState([]);
+    const [institucionSelectionada, setInstitucionSelectionada] = useState(null);
+    const [grados, setGrado] = useState(null);
+    const[medalInstitucion,setModalInstitucion] = useState(false);
+    const[listFilter,setListFilter] = useState([]);
+    const [busquedaGrados,setBusquedaGrados] = useState([])
+
 
     const colores={
         'oscuro':'#272F32',
@@ -14,7 +25,11 @@ export function Contexto({children}){
     }
 
     return(
-        <contextoGeneral.Provider value={{usuarioActivo,SetUsuarioActivo,colores}}>
+        <contextoGeneral.Provider value={{usuarioActivo,SetUsuarioActivo,colores,activado,setActivado,
+            estiloActivado,setEstiloActivado,datos, setDatos,perfil, setPerfil,instituciones, setInstituciones,
+            institucionSelectionada, setInstitucionSelectionada,medalInstitucion,setModalInstitucion,grados, setGrado,
+            listFilter,setListFilter,busquedaGrados,setBusquedaGrados
+        }}>
             {children}
         </contextoGeneral.Provider>
     )
